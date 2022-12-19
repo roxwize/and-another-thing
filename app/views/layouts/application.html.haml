@@ -1,0 +1,19 @@
+!!!
+%html
+  %head
+    %title And Another Thing...
+    %meta{ name: "viewport", content: "width=device-width,initial-scale=1" }/
+    =csrf_meta_tags
+    =csp_meta_tag
+
+    =stylesheet_link_tag "application", "data-turbo-track": "reload"
+    =javascript_importmap_tags
+  %body
+    #main
+      %center#navbar
+        =render partial: "partials/nav"
+      - if notice.present?
+        #notice.flash= notice
+      - if alert.present?
+        #alert.flash= alert
+      #content= yield

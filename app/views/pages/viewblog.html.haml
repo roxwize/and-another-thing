@@ -1,0 +1,33 @@
+%h1
+  = @blog.name + ","
+  = @blog.user.username + "'s blog"
+%h2
+  - if @blog.kudos.nil?
+    0
+  - else
+    =@blog.kudos.count
+  kudos |
+  = link_to "++", blog_upvote_path(id: @blog.id)
+%p
+  Most recent kudo by
+  %strong= @blog.kudos.order("created_at").last.user.username
+%hr/
+
+%h3 Recent posts
+- if @blog.posts.any?
+  %table
+    %tbody
+      %tr
+        %td.header
+          %strong Title
+        %td.header
+          %strong Comments
+        %td.header
+          %strong Created At
+    - @posts.each do |p|
+      %tr
+        %td= link_to p.title, blog_post_path(id: p.id)
+        %td= p.comments.count
+        %td= p.created_at.to_formatted_s(:long_ordinal).gsub(/(202\d)/) { |_| Integer($1) - 17 }
+- else
+  Zilch! Nada! None!

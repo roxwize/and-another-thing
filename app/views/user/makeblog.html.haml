@@ -1,0 +1,15 @@
+%h1 Create a blog
+
+= form_with model: @blog, data: {turbo: false}, url: blog_create_path do |f|
+  - if @blog.errors.any?
+    %h2 There were some errors!
+    %ul
+    - @blog.errors.full_messages.each do |error|
+      %li= error
+
+  .field
+    = f.label :name
+    %br/
+    = f.text_field :name, maxlength: 20
+
+  =f.submit

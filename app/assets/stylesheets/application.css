@@ -1,0 +1,103 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+body {
+    background-image: url("bg.gif");
+    margin: 0;
+    padding: 0;
+    font-family: 'Garamond', serif;
+}
+
+#main {
+    background-color: #cccccc;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 50%;
+    padding-bottom: 1em;
+    margin: auto;
+}
+
+#content {
+    padding: 0 2em 0 2em;
+}
+
+#navbar {
+    margin-top: 1em;
+    text-align: center;
+}
+
+#navbar > #menu {
+    width: 100%;
+    padding: 0;
+    list-style-type: none;
+    overflow: hidden;
+    background-color: #2e2f30;
+    margin-bottom: 0;
+}
+
+#menu li a {
+    display: block;
+    color: white;
+    text-decoration: none;
+}
+
+#menu li {
+    float: left;
+    margin: 1em;
+}
+
+#menu li:hover {
+    font-weight: bold;
+}
+
+.flash {
+    width: 100%;
+    text-align: center;
+    padding: 1em 0 1em 0;
+    font-weight: bold;
+}
+
+#notice {
+    background: #9999ff;
+}
+
+#alert {
+    background: #ff9999;
+}
+
+.field {
+    margin: 0.5em 0 0.5em 0;
+}
+
+table, tr, td {
+    border: 1px solid black;
+    padding: 0.5em;
+}
+
+td.header {
+    background: #999999;
+    font-weight: bold;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+td.break {
+    word-wrap: anywhere;
+}

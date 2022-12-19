@@ -1,0 +1,16 @@
+%h1 Write a comment
+= link_to "Return to post", blog_post_path(id: @post.id)
+
+= form_with model: @comment, url: blog_createcomment_path(id: @post.id), data: {turbo:false} do |f|
+  - if @comment.errors.any?
+    %h2 There were some errors!
+    %ul
+    - @comment.errors.full_messages.each do |error|
+      %li= error
+
+  .field
+    =f.label :content
+    %br/
+    =f.text_area :content
+
+  =f.submit

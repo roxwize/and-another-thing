@@ -1,0 +1,22 @@
+%h1 Explore
+%p
+  This is a list of the 25 most recently updated blogs.
+  %strong Times are in UTC &pm;0:00 format.
+
+%table
+  %tbody
+    %tr
+      %td.header
+        %strong Name
+      %td.header
+        %strong Author
+      %td.header
+        %strong Kudos
+      %td.header
+        %strong Updated At
+  - @blogs.each do |b|
+    %tr
+      %td= link_to b.name, blog_view_path(id: b.id)
+      %td= b.user.username
+      %td= b.kudos.count
+      %td= b.updated_at.to_formatted_s(:long_ordinal).gsub(/(202\d)/) { |_| Integer($1) - 17 }

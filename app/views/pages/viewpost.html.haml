@@ -1,0 +1,27 @@
+%h1= @post.title
+%h3
+  %a{href: blog_view_path(id: @post.blog.id)}= @post.blog.name
+
+= raw simple_format(@post.content)
+
+- if not current_user.nil? and current_user.id == @post.blog.user.id
+  = link_to "Edit this post", blog_editpost_path(id: @post.id)
+
+%hr/
+
+%h1 Comments
+= link_to "Write a comment", blog_createcomment_path(id: @post.id)
+%table{style: "margin-top:1em;"}
+  %tbody
+    %tr
+      %td.header
+        %strong User
+      %td.header
+        %strong Content
+      %td.header
+        %strong Sent At
+  - @post.comments.order('created_at DESC').each do |comment|
+    %tr
+      %td= comment.user.username
+      %td.break= comment.content
+      %td= comment.created_at.to_formatted_s(:long_ordinal).gsub(/(202\d)/) { |_| Integer($1) - 17 }

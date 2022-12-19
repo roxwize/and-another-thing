@@ -1,0 +1,23 @@
+%h1 Your Dashboard
+%p
+  Welcome to And Another Thing...,
+  =current_user.username + "!"
+  - if current_user.blog.nil?
+    %strong You do not have a blog.
+  - else
+    Your blog is
+    %strong= current_user.blog.name + "."
+    You have
+    - if current_user.blog.kudos.nil?
+      %strong 0
+    - else
+      %strong= current_user.blog.kudos.count
+    kudos.
+
+%p Here are some things you can do:
+%ul
+  - if current_user.blog.nil?
+    %li= link_to "Create a blog", blog_create_path
+  - else
+    %li= link_to "Edit my blog", blog_edit_path
+    %li= link_to "Create a post", blog_createpost_path

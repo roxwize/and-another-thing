@@ -1,0 +1,23 @@
+%h1
+  Edit
+  =@post.title
+%p You are allowed to use basic HTML elements.
+
+= form_with model: @post, url: blog_editpost_path(id: @post.id), data: {turbo:false} do |f|
+  - if @post.errors.any?
+    %h2 There were some errors!
+    %ul
+    - @post.errors.full_messages.each do |error|
+      %li= error
+
+  .field
+    = f.label :title
+    %br/
+    %span= @post.title
+
+  .field
+    = f.label :content
+    %br/
+    = f.text_area :content
+
+  =f.submit
